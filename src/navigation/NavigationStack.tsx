@@ -11,7 +11,15 @@ export default function NavigationStack(): React.JSX.Element {
       initialRouteName="EnterDetails"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="EnterDetails" component={EnterDetails} />
-      <Stack.Screen name="ShowDetails" component={ShowDetails} />
+      <Stack.Screen
+        name="ShowDetails"
+        component={ShowDetails}
+        options={{
+          presentation: 'modal',
+          animationTypeForReplace: 'push',
+          animation: 'slide_from_bottom',
+        }}
+      />
     </Stack.Navigator>
   );
 }

@@ -10,7 +10,7 @@ const isInputInvalid = (input: InputField) => {
   return isInvalid;
 };
 
-const getUserData = async (setUserData: SetUserData) => {
+const getUserData = (setUserData: SetUserData) => {
   setUserData(mockData);
 };
 
@@ -21,7 +21,7 @@ const updateUserData = (
   setUserData: SetUserData,
 ) => {
   const userDataCopy = {...userData};
-  userDataCopy[field].value = field === 'age' ? Number(text) : text;
+  userDataCopy[field].value = text;
   setUserData(userDataCopy);
 };
 

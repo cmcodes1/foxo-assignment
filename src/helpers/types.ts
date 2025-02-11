@@ -3,7 +3,7 @@ import {Dispatch, SetStateAction} from 'react';
 type InputField = {
   inputType: 'TextInput' | 'RadioButton' | string;
   validation: RegExp | string;
-  value: string | number;
+  value: string;
 };
 
 type SetState = Dispatch<SetStateAction<{}>>;

@@ -25,6 +25,14 @@ type Navigation = {
   goBack: () => void;
 };
 
+type ErrorBoundaryState = {
+  hasError: boolean;
+};
+
+type ErrorBoundaryProps = {
+  children: React.ReactNode;
+};
+
 export type {
   InputField,
   SetState,
@@ -33,4 +41,6 @@ export type {
   UserData,
   ScreenName,
   Navigation,
+  ErrorBoundaryProps,
+  ErrorBoundaryState,
 };

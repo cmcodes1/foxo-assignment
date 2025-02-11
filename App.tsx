@@ -3,6 +3,7 @@ import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import NavigationStack from './src/navigation/NavigationStack';
+import ErrorBoundary from './src/helpers/ErrorBoundary';
 
 export default function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,9 +19,11 @@ export default function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <NavigationContainer>
-        <NavigationStack />
-      </NavigationContainer>
+      <ErrorBoundary>
+        <NavigationContainer>
+          <NavigationStack />
+        </NavigationContainer>
+      </ErrorBoundary>
     </SafeAreaView>
   );
 }

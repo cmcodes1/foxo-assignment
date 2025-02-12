@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   root: {
     flex: 1,
     padding: 10,
+    marginTop: 50,
   },
   center: {
     flex: 1,

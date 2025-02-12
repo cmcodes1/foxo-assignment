@@ -1,6 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ErrorBoundary from './src/helpers/ErrorBoundary';
 import NavigationStack from './src/navigation/NavigationStack';
@@ -14,7 +15,7 @@ export default function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaProvider style={backgroundStyle}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -24,6 +25,6 @@ export default function App(): React.JSX.Element {
           <NavigationStack />
         </NavigationContainer>
       </ErrorBoundary>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

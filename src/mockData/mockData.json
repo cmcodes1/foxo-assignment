@@ -1,15 +1,60 @@
 {
-  "age": {
+  "1": {
     "inputType": "TextInput",
     "validation": "^[0-9]+$",
     "value": "26"
   },
-  "gender": {
+  "2": {
     "inputType": "RadioButton",
     "validation": "^[a-z]+$",
     "value": "M"
   },
-  "name": {
+  "3": {
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": "John Doe"
+  },
+  "4": {
+    "inputType": "TextInput",
+    "validation": "^[0-9]+$",
+    "value": "26"
+  },
+  "5": {
+    "inputType": "RadioButton",
+    "validation": "^[a-z]+$",
+    "value": "M"
+  },
+  "6": {
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": "John Doe"
+  },
+  "7": {
+    "inputType": "TextInput",
+    "validation": "^[0-9]+$",
+    "value": "26"
+  },
+  "8": {
+    "inputType": "RadioButton",
+    "validation": "^[a-z]+$",
+    "value": "M"
+  },
+  "9": {
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": "John Doe"
+  },
+  "10": {
+    "inputType": "TextInput",
+    "validation": "^[0-9]+$",
+    "value": "26"
+  },
+  "11": {
+    "inputType": "RadioButton",
+    "validation": "^[a-z]+$",
+    "value": "M"
+  },
+  "12": {
     "inputType": "TextInput",
     "validation": "^[a-z ]+$",
     "value": "John Doe"

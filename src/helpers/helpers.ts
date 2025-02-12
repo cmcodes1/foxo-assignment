@@ -1,5 +1,4 @@
 import {Option} from '../components/RadioButton/types';
-import mockData from '../mockData/mockData.json';
 import {InputField, SetUserData, UserData, UserDataInputFields} from './types';
 
 const isInputInvalid = (input: InputField) => {
@@ -8,10 +7,6 @@ const isInputInvalid = (input: InputField) => {
   );
 
   return isInvalid;
-};
-
-const getUserData = (setUserData: SetUserData) => {
-  setUserData(mockData);
 };
 
 const updateUserData = (
@@ -25,4 +20,4 @@ const updateUserData = (
   setUserData(userDataCopy);
 };
 
-export {getUserData, isInputInvalid, updateUserData};
+export {isInputInvalid, updateUserData};

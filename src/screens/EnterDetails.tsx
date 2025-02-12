@@ -1,30 +1,27 @@
-import {NavigationProp} from '@react-navigation/native';
-import React, {useEffect, useRef, useState} from 'react';
-import {ActivityIndicator, Button, ScrollView, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, Button, FlatList, Text, View} from 'react-native';
 import Input from '../components/Input/Input';
-import {updateUserData} from '../helpers/helpers';
-import {InputField, UserData, UserDataInputFields} from '../helpers/types';
-import {styles} from '../styles/styles';
+import {Navigation, UserData} from '../helpers/types';
 import mockData from '../mockData/mockData.json';
+import {styles} from '../styles/styles';
 
-export default function EnterDetails({
-  navigation,
-}: {
-  navigation: NavigationProp<any>;
-}) {
-  const [userData, setUserData] = useState<UserData>({} as UserData);
+export default function EnterDetails({navigation}: {navigation: Navigation}) {
+  const [userData, setUserData] = useState<UserData>(mockData);
   const [currentSize, setCurrentSize] = useState(5);
 
   function createPaginator() {
-    let data = JSON.parse(JSON.stringify(mockData));
+    let updatedUserData = mockData.map(mockItem => {
+      const userItem = userData.find(user => user.id === mockItem.id);
+      return userItem ? {...mockItem, value: userItem.value} : mockItem;
+    });
+    let data = JSON.parse(JSON.stringify(updatedUserData));
     const keys = Object.keys(data);
 
     return function getNextPage() {
-      const paginatedData: {[key: string]: any} = {};
+      let paginatedData: UserData = [];
       keys.slice(0, currentSize).forEach(key => {
-        paginatedData[key] = data[key];
+        paginatedData.push(data[key]);
       });
-
       setCurrentSize(currentSize + 5);
       return paginatedData;
     };
@@ -32,12 +29,8 @@ export default function EnterDetails({
 
   const loadMore = () => {
     const paginator = createPaginator();
-    const paginatedData = paginator();
-
-    if (paginatedData) {
-      let updatedUserData = {...userData, ...paginatedData};
-      setUserData(updatedUserData);
-    }
+    let paginatedData = paginator();
+    paginatedData && setUserData(paginatedData);
   };
 
   useEffect(() => {
@@ -46,65 +39,39 @@ export default function EnterDetails({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const isCloseToBottom = ({
-    layoutMeasurement,
-    contentOffset,
-    contentSize,
-  }: {
-    layoutMeasurement: {height: number};
-    contentOffset: {y: number};
-    contentSize: {height: number};
-  }) => {
-    const paddingToBottom = 20;
-    return (
-      layoutMeasurement.height + contentOffset.y >=
-      contentSize.height - paddingToBottom
-    );
-  };
-
-  const scrollRef = useRef<ScrollView | null>(null);
-
   return (
     <View style={styles.root}>
-      {Object.keys(userData).length === 0 ? (
+      {userData.length === 0 ? (
         <ActivityIndicator size={'large'} />
       ) : (
         <>
-          <ScrollView
-            ref={scrollRef}
-            onScroll={({nativeEvent}) => {
-              if (isCloseToBottom(nativeEvent)) {
-                loadMore();
-                if (scrollRef.current) {
-                  scrollRef.current.scrollToEnd();
-                }
-              }
-            }}>
-            {Object.entries(userData).map(item => (
-              <View key={item[0]} style={styles.row}>
-                <Text style={styles.label}>{item[0]}</Text>
+          <FlatList
+            data={userData}
+            renderItem={({item, index}) => (
+              <View style={styles.row}>
+                <Text style={styles.label}>{item.fieldName}</Text>
                 <Input
-                  inputFieldName={item[0] as UserDataInputFields}
-                  inputField={item[1] as InputField}
-                  onPress={text =>
-                    updateUserData(
-                      item[0] as UserDataInputFields,
-                      text,
-                      userData,
-                      setUserData,
-                    )
-                  }
+                  inputField={item}
+                  onPress={text => {
+                    let userDataCopy = JSON.parse(JSON.stringify(userData));
+                    userDataCopy[index].value = text;
+                    setUserData(userDataCopy);
+                  }}
                 />
               </View>
-            ))}
-          </ScrollView>
-          <Button
-            title="Next Page"
-            onPress={() =>
-              navigation.navigate('ShowDetails', {
-                userData: userData,
-              })
+            )}
+            ListFooterComponent={
+              <Button
+                title="Next Page"
+                onPress={() =>
+                  navigation.navigate('ShowDetails', {
+                    userData: userData,
+                  })
+                }
+              />
             }
+            onEndReached={() => loadMore()}
+            keyExtractor={item => item.id.toString()}
           />
         </>
       )}

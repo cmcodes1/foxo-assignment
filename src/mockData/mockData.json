@@ -1,62 +1,72 @@
-{
-  "1": {
+[
+  {
+    "id": "1",
+    "fieldName": "age",
     "inputType": "TextInput",
     "validation": "^[0-9]+$",
-    "value": "26"
+    "value": "27"
   },
-  "2": {
+  {
+    "id": "2",
+    "fieldName": "gender",
     "inputType": "RadioButton",
     "validation": "^[a-z]+$",
     "value": "M"
   },
-  "3": {
+  {
+    "id": "3",
+    "fieldName": "first name",
     "inputType": "TextInput",
     "validation": "^[a-z ]+$",
-    "value": "John Doe"
+    "value": "John"
   },
-  "4": {
+  {
+    "id": "4",
+    "fieldName": "last name",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": "Doe"
+  },
+  {
+    "id": "5",
+    "fieldName": "address",
+    "inputType": "TextInput",
+    "validation": "^[a-z0-9 ]+$",
+    "value": "Bengaluru"
+  },
+  {
+    "id": "6",
+    "fieldName": "zip code",
     "inputType": "TextInput",
     "validation": "^[0-9]+$",
-    "value": "26"
+    "value": "560001"
   },
-  "5": {
-    "inputType": "RadioButton",
-    "validation": "^[a-z]+$",
-    "value": "M"
-  },
-  "6": {
+  {
+    "id": "7",
+    "fieldName": "state",
     "inputType": "TextInput",
     "validation": "^[a-z ]+$",
-    "value": "John Doe"
+    "value": "Karnataka"
   },
-  "7": {
+  {
+    "id": "8",
+    "fieldName": "country",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": "India"
+  },
+  {
+    "id": "9",
+    "fieldName": "phone",
     "inputType": "TextInput",
     "validation": "^[0-9]+$",
-    "value": "26"
+    "value": "9012345678"
   },
-  "8": {
-    "inputType": "RadioButton",
-    "validation": "^[a-z]+$",
-    "value": "M"
-  },
-  "9": {
+  {
+    "id": "10",
+    "fieldName": "department",
     "inputType": "TextInput",
     "validation": "^[a-z ]+$",
-    "value": "John Doe"
-  },
-  "10": {
-    "inputType": "TextInput",
-    "validation": "^[0-9]+$",
-    "value": "26"
-  },
-  "11": {
-    "inputType": "RadioButton",
-    "validation": "^[a-z]+$",
-    "value": "M"
-  },
-  "12": {
-    "inputType": "TextInput",
-    "validation": "^[a-z ]+$",
-    "value": "John Doe"
+    "value": "mobile development"
   }
-}
+]

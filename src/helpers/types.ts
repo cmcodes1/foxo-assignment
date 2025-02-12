@@ -1,6 +1,10 @@
-import {Dispatch, SetStateAction} from 'react';
+import {Dispatch, Key, ReactNode, SetStateAction} from 'react';
+
+type UserDataInputField = 'age' | 'gender' | 'name' | string;
 
 type InputField = {
+  id: Key;
+  fieldName: UserDataInputField;
   inputType: 'TextInput' | 'RadioButton' | string;
   validation: RegExp | string;
   value: string;
@@ -8,15 +12,9 @@ type InputField = {
 
 type SetState = Dispatch<SetStateAction<{}>>;
 
-type SetUserData = Dispatch<SetStateAction<UserData>>;
+type SetUserData = Dispatch<SetStateAction<InputField[]>>;
 
-type UserDataInputFields = 'age' | 'gender' | 'name' | string;
-
-type UserData = {
-  age: InputField;
-  gender: InputField;
-  name: InputField;
-};
+type UserData = InputField[];
 
 type ScreenName = 'EnterDetails' | 'ShowDetails';
 
@@ -30,17 +28,16 @@ type ErrorBoundaryState = {
 };
 
 type ErrorBoundaryProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export type {
-  InputField,
-  SetState,
-  SetUserData,
-  UserDataInputFields,
-  UserData,
-  ScreenName,
-  Navigation,
   ErrorBoundaryProps,
   ErrorBoundaryState,
+  InputField,
+  Navigation,
+  ScreenName,
+  SetState,
+  SetUserData,
+  UserData,
 };

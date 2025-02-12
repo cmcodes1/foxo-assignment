@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
+import {styles} from '../styles/styles';
 import {ErrorBoundaryProps, ErrorBoundaryState} from './types';
 
 class ErrorBoundary extends React.Component<
@@ -21,7 +22,11 @@ class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.hasError) {
-      return <Text>Something went wrong! Try again!</Text>;
+      return (
+        <View style={styles.center}>
+          <Text>Something went wrong! Try again!</Text>
+        </View>
+      );
     }
 
     return this.props.children;

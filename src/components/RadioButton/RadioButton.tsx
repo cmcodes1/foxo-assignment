@@ -1,7 +1,7 @@
-import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import React, {useState} from 'react';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
-import {RadioButtonProps, Option} from './types';
+import {Option, RadioButtonProps} from './types';
 
 export default function RadioButton(
   props: RadioButtonProps,

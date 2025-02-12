@@ -2,8 +2,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import NavigationStack from './src/navigation/NavigationStack';
 import ErrorBoundary from './src/helpers/ErrorBoundary';
+import NavigationStack from './src/navigation/NavigationStack';
 
 export default function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';

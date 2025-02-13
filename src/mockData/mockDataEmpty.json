@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "fieldName": "age",
+    "inputType": "TextInput",
+    "validation": "^[0-9]+$",
+    "value": ""
+  },
+  {
+    "id": "2",
+    "fieldName": "gender",
+    "inputType": "RadioButton",
+    "validation": "^[a-z]+$",
+    "value": ""
+  },
+  {
+    "id": "3",
+    "fieldName": "first name",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": ""
+  },
+  {
+    "id": "4",
+    "fieldName": "last name",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": ""
+  },
+  {
+    "id": "5",
+    "fieldName": "address",
+    "inputType": "TextInput",
+    "validation": "^[a-z0-9 ]+$",
+    "value": ""
+  },
+  {
+    "id": "6",
+    "fieldName": "zip code",
+    "inputType": "TextInput",
+    "validation": "^[0-9]+$",
+    "value": ""
+  },
+  {
+    "id": "7",
+    "fieldName": "state",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": ""
+  },
+  {
+    "id": "8",
+    "fieldName": "country",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": ""
+  },
+  {
+    "id": "9",
+    "fieldName": "phone",
+    "inputType": "TextInput",
+    "validation": "^[0-9]+$",
+    "value": ""
+  },
+  {
+    "id": "10",
+    "fieldName": "department",
+    "inputType": "TextInput",
+    "validation": "^[a-z ]+$",
+    "value": ""
+  }
+]

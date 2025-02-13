@@ -3,6 +3,7 @@ import {ActivityIndicator, Button, FlatList, Text, View} from 'react-native';
 import Input from '../components/Input/Input';
 import {Navigation, UserData} from '../helpers/types';
 import mockData from '../mockData/mockData.json';
+import mockDataEmpty from '../mockData/mockDataEmpty.json';
 import {styles} from '../styles/styles';
 
 export default function EnterDetails({navigation}: {navigation: Navigation}) {
@@ -33,6 +34,17 @@ export default function EnterDetails({navigation}: {navigation: Navigation}) {
     paginatedData && setUserData(paginatedData);
   };
 
+  const clearFormData = () => {
+    setUserData(mockDataEmpty);
+  };
+
+  const handleSubmit = () => {
+    navigation.navigate('ShowDetails', {
+      userData: userData,
+    });
+    clearFormData();
+  };
+
   useEffect(() => {
     loadMore();
 
@@ -61,14 +73,7 @@ export default function EnterDetails({navigation}: {navigation: Navigation}) {
               </View>
             )}
             ListFooterComponent={
-              <Button
-                title="Next Page"
-                onPress={() =>
-                  navigation.navigate('ShowDetails', {
-                    userData: userData,
-                  })
-                }
-              />
+              <Button title="Submit" onPress={handleSubmit} />
             }
             onEndReached={() => loadMore()}
             keyExtractor={item => item.id.toString()}

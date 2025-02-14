@@ -1,11 +1,14 @@
-import {RouteProp} from '@react-navigation/native';
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {UserData} from '../helpers/types';
+import {Button, FlatList, Text, View} from 'react-native';
+import {ShowDetailsProps, UserData} from '../helpers/types';
 import {styles} from '../styles/styles';
 
-export default function ShowDetails({route}: {route: RouteProp<any, any>}) {
+export default function ShowDetails({route, navigation}: ShowDetailsProps) {
   let userData: UserData = route?.params?.userData;
+
+  const handleBack = () => {
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.root}>
@@ -19,6 +22,7 @@ export default function ShowDetails({route}: {route: RouteProp<any, any>}) {
         )}
         keyExtractor={item => item.id.toString()}
       />
+      <Button title="Go Back" onPress={handleBack} />
     </View>
   );
 }

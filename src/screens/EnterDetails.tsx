@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, Button, FlatList, Text, View} from 'react-native';
 import Input from '../components/Input/Input';
-import {Navigation, UserData} from '../helpers/types';
+import {EnterDetailsProps, UserData} from '../helpers/types';
 import mockData from '../mockData/mockData.json';
 import mockDataEmpty from '../mockData/mockDataEmpty.json';
 import {styles} from '../styles/styles';
 
-export default function EnterDetails({navigation}: {navigation: Navigation}) {
+export default function EnterDetails({navigation}: EnterDetailsProps) {
   const [userData, setUserData] = useState<UserData>(mockData);
   const [currentSize, setCurrentSize] = useState(5);
 

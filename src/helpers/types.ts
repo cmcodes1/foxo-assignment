@@ -1,3 +1,4 @@
+import {RouteProp} from '@react-navigation/native';
 import {Dispatch, Key, ReactNode, SetStateAction} from 'react';
 
 type UserDataInputField = 'age' | 'gender' | 'name' | string;
@@ -31,6 +32,15 @@ type ErrorBoundaryProps = {
   children: ReactNode;
 };
 
+type EnterDetailsProps = {
+  navigation: Navigation;
+};
+
+type ShowDetailsProps = {
+  route: RouteProp<any, any>;
+  navigation: Navigation;
+};
+
 export type {
   ErrorBoundaryProps,
   ErrorBoundaryState,
@@ -40,4 +50,6 @@ export type {
   SetState,
   SetUserData,
   UserData,
+  EnterDetailsProps,
+  ShowDetailsProps,
 };

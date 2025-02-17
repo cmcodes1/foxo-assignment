@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {Button, FlatList, Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
+import InfiniteScroll from '../components/InfiniteScroll/InfiniteScroll';
 import {ShowDetailsProps, UserData} from '../helpers/types';
 import {styles} from '../styles/styles';
 
@@ -40,17 +41,16 @@ export default function ShowDetails({route, navigation}: ShowDetailsProps) {
 
   return (
     <View style={styles.root}>
-      <FlatList
-        data={userData}
+      <InfiniteScroll
+        userData={userData}
         renderItem={({item}) => (
           <View style={styles.row}>
             <Text style={styles.label}>{item.fieldName}: </Text>
             <Text style={styles.label}>{item.value}</Text>
           </View>
         )}
-        ListFooterComponent={<Button title="Go Back" onPress={handleBack} />}
-        onEndReached={() => loadMore()}
-        keyExtractor={item => item.id.toString()}
+        lisFooterComponent={<Button title="Go Back" onPress={handleBack} />}
+        loadMore={loadMore}
       />
     </View>
   );

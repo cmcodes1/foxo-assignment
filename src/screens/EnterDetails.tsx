@@ -1,40 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {ActivityIndicator, Button, FlatList, Text, View} from 'react-native';
 import Input from '../components/Input/Input';
 import {EnterDetailsProps, UserData} from '../helpers/types';
 import mockData from '../mockData/mockData.json';
-import mockDataEmpty from '../mockData/mockDataEmpty.json';
 import {styles} from '../styles/styles';
 
 export default function EnterDetails({navigation}: EnterDetailsProps) {
   const [userData, setUserData] = useState<UserData>(mockData);
-  const [currentSize, setCurrentSize] = useState(5);
-
-  function createPaginator() {
-    let updatedUserData = mockData.map(mockItem => {
-      const userItem = userData.find(user => user.id === mockItem.id);
-      return userItem ? {...mockItem, value: userItem.value} : mockItem;
-    });
-    let data = JSON.parse(JSON.stringify(updatedUserData));
-    const keys = Object.keys(data);
-
-    return function getNextPage() {
-      let paginatedData: UserData = [];
-      keys.slice(0, currentSize).forEach(key => {
-        paginatedData.push(data[key]);
-      });
-      setCurrentSize(currentSize + 5);
-      return paginatedData;
-    };
-  }
-
-  const loadMore = () => {
-    const paginator = createPaginator();
-    let paginatedData = paginator();
-    paginatedData && setUserData(paginatedData);
-  };
 
   const clearFormData = () => {
+    let mockDataEmpty = mockData.map(item => ({...item, value: ''}));
     setUserData(mockDataEmpty);
   };
 
@@ -44,12 +19,6 @@ export default function EnterDetails({navigation}: EnterDetailsProps) {
     });
     clearFormData();
   };
-
-  useEffect(() => {
-    loadMore();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <View style={styles.root}>
@@ -72,7 +41,6 @@ export default function EnterDetails({navigation}: EnterDetailsProps) {
             </View>
           )}
           ListFooterComponent={<Button title="Submit" onPress={handleSubmit} />}
-          onEndReached={() => loadMore()}
           keyExtractor={item => item.id.toString()}
         />
       )}

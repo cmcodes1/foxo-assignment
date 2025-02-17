@@ -11,6 +11,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  header: {
+    fontSize: 30,
+    fontWeight: 'thin',
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+  },
+  marginBottom: {
+    marginBottom: 20,
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',

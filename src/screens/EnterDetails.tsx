@@ -25,24 +25,31 @@ export default function EnterDetails({navigation}: EnterDetailsProps) {
       {userData.length === 0 ? (
         <ActivityIndicator size={'large'} />
       ) : (
-        <FlatList
-          data={userData}
-          renderItem={({item, index}) => (
-            <View style={styles.row}>
-              <Text style={styles.label}>{item.fieldName}</Text>
-              <Input
-                inputField={item}
-                onPress={text => {
-                  let userDataCopy = JSON.parse(JSON.stringify(userData));
-                  userDataCopy[index].value = text;
-                  setUserData(userDataCopy);
-                }}
-              />
-            </View>
-          )}
-          ListFooterComponent={<Button title="Submit" onPress={handleSubmit} />}
-          keyExtractor={item => item.id.toString()}
-        />
+        <>
+          <Text style={[styles.header, styles.marginBottom]}>
+            Enter Details
+          </Text>
+          <FlatList
+            data={userData}
+            renderItem={({item, index}) => (
+              <View style={styles.row}>
+                <Text style={styles.label}>{item.fieldName}</Text>
+                <Input
+                  inputField={item}
+                  onPress={text => {
+                    let userDataCopy = JSON.parse(JSON.stringify(userData));
+                    userDataCopy[index].value = text;
+                    setUserData(userDataCopy);
+                  }}
+                />
+              </View>
+            )}
+            ListFooterComponent={
+              <Button title="Submit" onPress={handleSubmit} />
+            }
+            keyExtractor={item => item.id.toString()}
+          />
+        </>
       )}
     </View>
   );

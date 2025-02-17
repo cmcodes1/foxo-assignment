@@ -1,7 +1,7 @@
 import {RouteProp} from '@react-navigation/native';
-import {Dispatch, Key, ReactNode, SetStateAction} from 'react';
+import {Key, ReactNode} from 'react';
 
-type UserDataInputField = 'age' | 'gender' | 'name' | string;
+type UserDataInputField = string;
 
 type InputField = {
   id: Key;
@@ -11,13 +11,9 @@ type InputField = {
   value: string;
 };
 
-type SetState = Dispatch<SetStateAction<{}>>;
-
-type SetUserData = Dispatch<SetStateAction<InputField[]>>;
-
 type UserData = InputField[];
 
-type ScreenName = 'EnterDetails' | 'ShowDetails';
+type ScreenName = 'EnterDetails' | 'ShowDetails' | 'PreviewDetails';
 
 type Navigation = {
   navigate: (screenName: ScreenName, params: {userData: UserData}) => any;
@@ -41,15 +37,19 @@ type ShowDetailsProps = {
   navigation: Navigation;
 };
 
+type PreviewDetailsProps = {
+  route: RouteProp<any, any>;
+  navigation: Navigation;
+};
+
 export type {
+  EnterDetailsProps,
   ErrorBoundaryProps,
   ErrorBoundaryState,
   InputField,
   Navigation,
+  PreviewDetailsProps,
   ScreenName,
-  SetState,
-  SetUserData,
-  UserData,
-  EnterDetailsProps,
   ShowDetailsProps,
+  UserData,
 };

@@ -6,6 +6,7 @@ import {styles} from '../styles/styles';
 
 export default function ShowDetails({route, navigation}: ShowDetailsProps) {
   let userFormData: UserData = route?.params?.userData;
+
   const [userData, setUserData] = useState<UserData>(userFormData);
   const [currentSize, setCurrentSize] = useState(5);
 
@@ -29,6 +30,12 @@ export default function ShowDetails({route, navigation}: ShowDetailsProps) {
     paginatedData && setUserData(paginatedData);
   };
 
+  const handleNavigation = () => {
+    navigation.navigate('PreviewDetails', {
+      userData: userData,
+    });
+  };
+
   const handleBack = () => {
     navigation.goBack();
   };
@@ -41,6 +48,7 @@ export default function ShowDetails({route, navigation}: ShowDetailsProps) {
 
   return (
     <View style={styles.root}>
+      <Text style={[styles.header, styles.marginBottom]}>List Details</Text>
       <InfiniteScroll
         userData={userData}
         renderItem={({item}) => (
@@ -49,7 +57,13 @@ export default function ShowDetails({route, navigation}: ShowDetailsProps) {
             <Text style={styles.label}>{item.value}</Text>
           </View>
         )}
-        lisFooterComponent={<Button title="Go Back" onPress={handleBack} />}
+        lisFooterComponent={
+          <>
+            <Button title="Preview" onPress={handleNavigation} />
+            <View style={styles.marginBottom} />
+            <Button title="Go Back" onPress={handleBack} />
+          </>
+        }
         loadMore={loadMore}
       />
     </View>
